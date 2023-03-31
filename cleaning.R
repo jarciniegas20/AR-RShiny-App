@@ -61,7 +61,7 @@ read_ar <- function(){ # function for loading in the data and cleaning
   
   df_sub_gr_90 <- df_sub_gr_90 %>% rename(CPT = proc_full)
   
-  variables <- c("ar","billing_group",#"current_fin_class",
+  variables <- c("ar","billing_group","billing_division",#"current_fin_class",
                  "current_payor","prov_name",
                  "bill_area",
                  "CPT","pos_name")
