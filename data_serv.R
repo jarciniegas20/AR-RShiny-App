@@ -14,6 +14,10 @@ ar_data <- reactive({ # this is separate for purposes of validation later
   
   ar2 <- ar %>% filter(billing_group %in% billing_group_sel)
   
+  billing_div_sel <- if (is.null(input$billing_division)) levels(ar2$billing_division) else input$billing_division
+  
+  ar2 <- ar2 %>% filter(billing_division %in% billing_div_sel)
+  
   
    # ar2 <- ar %>% 
    #   filter(current_fin_class == input$current_fin_class) 
@@ -39,6 +43,9 @@ xgb_data <- reactive({
    
    df_sub_gr_90Y <- df_sub_gr_90 %>% filter(billing_group %in% billing_group_sel)
 
+   billing_div_sel <- if (is.null(input$billing_division)) levels(df_sub_gr_90Y$billing_division) else input$billing_division
+   
+   df_sub_gr_90Y <- df_sub_gr_90Y %>% filter(billing_division %in% billing_div_sel)
 
    #df_sub_gr_90Y <- df_sub_gr_90 %>% 
    #  filter(current_fin_class == input$current_fin_class)

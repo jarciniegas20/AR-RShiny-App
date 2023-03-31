@@ -29,12 +29,11 @@ tabItem_model <-
               ,status = "primary"
               ,solidHeader = TRUE
               ,fluidRow(
-                 column(4, sidebarPanel(
-                                      #,uiOutput("payor_filter")#,width = 12)
-                                      uiOutput("bg_filter"),width = 12))
+                 column(3, sidebarPanel(uiOutput("bg_filter"),width = 12)),
+                 column(3, sidebarPanel(uiOutput("div_filter"),width = 12))
                
-                ,column(4, valueBoxOutput("model_test_vb", width = 12))
-                ,column(4, valueBoxOutput("model_training_vb", width = 12))
+                ,column(3, valueBoxOutput("model_test_vb", width = 12))
+                ,column(3, valueBoxOutput("model_training_vb", width = 12))
               )
               ,fluidRow(
                 column(

@@ -23,6 +23,27 @@
                       selected="DEPARTMENT OF SURGERY")
      })
      
+     output$div_filter <- renderUI({
+       
+       ar <- ar()
+       
+       billing_group_sel <- if (is.null(input$billing_group)) levels(ar$billing_group) else input$billing_group
+       
+       ar2 <- ar %>% filter(billing_group %in% billing_group_sel)
+       
+       # ar2 <- ar2 %>% # only keep instances of 10 or greater for this column
+       #   group_by(billing_division) %>% 
+       #   filter(n()>5)
+       
+       selectizeInput("billing_division", "Billing Division", unique(ar2$billing_division),
+                      # 
+                      # choices = c("Select" = "", 
+                      # levels(ar2$billing_division)),
+                      multiple=TRUE,
+                      selected=NULL)
+       
+       #unique(ar2$billing_division))
+     })
      
   output$model_training_vb <- renderValueBox({ # i think train rmse
     req(input$billing_group)
